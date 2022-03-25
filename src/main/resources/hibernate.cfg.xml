@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--Basic database connection-->
+        <!--Основное подключение к базе данных-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.username">banker</property>
+        <property name="connection.password"></property>
+
+        <!--Just displays. Optional parameter.-->
+        <!--Просто отображает. Не обязательный параметр.-->
+        <property name="hibernate.connection.characterEncoding">utf-8</property>
+
+        <!--Just displays the course of events in the console. Optional parameter.-->
+        <!--Просто отображает в консоле ход событий. Не обязательный параметр.-->
+        <property name="show_sql">true</property>
+
+        <!--The parameter is optional. Enables or disables the SQL format.-->
+        <!--Параметр не обязательный. Включает или отключает формат SQL.-->
+        <property name="format_sql">true</property>
+
+        <!--The parameter is optional. Indicates default database.-->
+        <!--Параметр не обязательный. Указывает на базу данных по умолчанию.-->
+        <property name="hibernate.default_schema">bank</property>
+
+        <!--The parameter is optional. If there are no tables in the database, Hibernate will create it.-->
+        <!--Параметр не обязательный. Если в базе данных нет таблиц, то Hibernate создаст ее.-->
+        <property name="hbm2ddl.auto">create</property>
+
+        <!--The parameter is optional. Dialect Database.-->
+        <!--Параметр не обязательный. Диалект базы данных.-->
+        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+
+        <!--The parameter is optional.-->
+        <!--Параметр не обязательный.-->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!--Resource map-->
+        <!--Карта ресурсов-->
+        <mapping resource="map.xml"/>
+        <mapping class="Account"/>
+        <mapping class="User"/>
+        <mapping class="Transfer"/>
+
+    </session-factory>
+</hibernate-configuration>
