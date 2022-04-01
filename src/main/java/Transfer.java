@@ -91,34 +91,36 @@ public class Transfer {
     }
 
         double currentBalance;
-        public void income(double amount, Account senderAccount, Account recipientAccount, int transferId, boolean isIncome){
+        public static Transfer income(double amount, Account senderAccount, Account recipientAccount, int transferId, boolean isIncome){
+           Transfer incomeTransfer = null;
             // create record
            //Transfer withdrawTransfer = new Transfer( transferId,new Date(),isIncome,senderAccount,recipientAccount);
            if (amount > 0){
                // create record
-               Transfer incomeTransfer = new Transfer( transferId,new Date(), true,senderAccount,recipientAccount,amount);
+               incomeTransfer = new Transfer( transferId,new Date(), true,senderAccount,recipientAccount,amount);
                senderAccount.setBalance(senderAccount.getBalance()+amount);
                recipientAccount.setBalance(recipientAccount.getBalance()-amount);
            }
            else {
-               System.out.println("Trying to record outcome with negative value!");
+               System.out.println("Trying to record income with negative value!");
                try {
                    Thread.sleep(10000);
                } catch (InterruptedException e) {
                    e.printStackTrace();
                }
         }
+           return incomeTransfer;
     }
-        public void outcome(double amount, Account senderAccount, Account recipientAccount, int transferId, boolean isIncome){
+        public static Transfer outcome(double amount, Account senderAccount, Account recipientAccount, int transferId, boolean isIncome) {
+            Transfer outcomeTransfer = null;
             if (amount < 0) {
                 if (senderAccount.getBalance() < amount) {
                     System.out.println("Not enough money");
                 }
-                Transfer outcomeTransfer = new Transfer(transferId, new Date(), false, senderAccount, recipientAccount, amount);
-                senderAccount.setBalance(senderAccount.getBalance()-amount);
-                recipientAccount.setBalance(recipientAccount.getBalance()+amount);
-            }
-            else {
+                outcomeTransfer = new Transfer(transferId, new Date(), false, senderAccount, recipientAccount, amount);
+                senderAccount.setBalance(senderAccount.getBalance() - amount);
+                recipientAccount.setBalance(recipientAccount.getBalance() + amount);
+            } else {
                 System.out.println("Trying to record outcome with positive value!");
                 try {
                     Thread.sleep(10000);
@@ -126,6 +128,7 @@ public class Transfer {
                     e.printStackTrace();
                 }
             }
+            return outcomeTransfer;
 //           if(senderAccount.getUserByUserId().getId() == recipientAccount.getUserByUserId().getId()){ type  }
         }
 }
