@@ -7,20 +7,73 @@ public class Transfer {
     @Id
     @Column(name = "id")
     private int transferId;
+
     @Column(name = "transferTimestamp",nullable = false)
     private Date transferTimestamp;
+
     //join by referencedcolname - many(several tranfers could be from one Account(schet)
     @ManyToOne
     @JoinColumn(name = "accountId", referencedColumnName = "id", nullable = false)
     private Account accountFrom;
+
     @ManyToOne
     @JoinColumn(name = "accountId", referencedColumnName = "id", nullable = false)
     private Account accountTo;
+
     //true - income(dohod), false - expense(trata)
     @Column(name = "transferType",nullable = false)
     private boolean isIncome;
+
     @Column(name = "transferAmount",nullable = false)
     private double transferAmount;
+
+    public int getTransferId() {
+        return transferId;
+    }
+
+    public void setTransferId(int transferId) {
+        this.transferId = transferId;
+    }
+
+    public Date getTransferTimestamp() {
+        return transferTimestamp;
+    }
+
+    public void setTransferTimestamp(Date transferTimestamp) {
+        this.transferTimestamp = transferTimestamp;
+    }
+
+    public Account getAccountFrom() {
+        return accountFrom;
+    }
+
+    public void setAccountFrom(Account accountFrom) {
+        this.accountFrom = accountFrom;
+    }
+
+    public Account getAccountTo() {
+        return accountFrom;
+    }
+
+    public void setAccountTo(Account accountTo) {
+        this.accountTo = accountTo;
+    }
+
+    public boolean isIncome(){
+        return isIncome;
+    }
+
+    public void setIsIncome(boolean isIncome) {
+        this.isIncome = isIncome;
+    }
+
+    public double getTransferAmount() {
+        return transferAmount;
+    }
+
+    public void setTransferAmount(double transferAmount) {
+        this.transferAmount = transferAmount;
+    }
 
     public Transfer(int transferId) {
         this.transferId = transferId;
