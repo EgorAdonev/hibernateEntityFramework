@@ -6,19 +6,19 @@ import java.util.Date;
 public class Transfer {
     @Id
     @Column(name = "id")
-    int transferId;
+    private int transferId;
     @Column(name = "transferTimestamp",nullable = false)
-    Date transferTimestamp;
+    private Date transferTimestamp;
     //join by referencedcolname - many(several tranfers could be from one Account(schet)
     @ManyToOne
     @JoinColumn(name = "accountId", referencedColumnName = "id", nullable = false)
-    Account accountFrom;
+    private Account accountFrom;
     @ManyToOne
     @JoinColumn(name = "accountId", referencedColumnName = "id", nullable = false)
-    Account accountTo;
+    private Account accountTo;
     //true - income(dohod), false - expense(trata)
     @Column(name = "transferType",nullable = false)
-    boolean isIncome;
+    private boolean isIncome;
     @Column(name = "transferAmount",nullable = false)
     private double transferAmount;
 
