@@ -11,24 +11,25 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.3.3.Final</version>
+            <version>5.6.7.Final</version>
         </dependency>
         <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-entitymanager</artifactId>
-        <version>5.3.3.Final</version>
+        <version>5.6.7.Final</version>
     </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.200</version>
+            <version>2.1.210</version>
         </dependency>
         <!-- Hibernate uses slf4j for logging, for our purposes here use the simple backend -->
         <dependency>
-            <groupId>com.mysql.cj.jdbc</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.200</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.3.3</version>
         </dependency>
+
 
     </dependencies>
     <properties>

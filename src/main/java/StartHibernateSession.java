@@ -8,7 +8,7 @@ import java.util.Random;
 public class StartHibernateSession {
         public static void main(String[] args) {
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+                Class.forName("org.postgresql.Driver").getDeclaredConstructor().newInstance();
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
