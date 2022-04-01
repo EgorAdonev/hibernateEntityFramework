@@ -6,7 +6,6 @@ public class User {
     @Id
     @Column(name = "id", nullable = false)
     @OneToMany(mappedBy = "userByUserId")
-    @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
     private int userId;
     @Basic
     @Column(name = "name", nullable = false, length = 30)
