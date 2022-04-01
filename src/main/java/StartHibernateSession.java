@@ -28,6 +28,7 @@ public class StartHibernateSession {
             Account userAcc1 = new Account(randInt.nextInt(100)+10,29.13);
             Account userAcc2 = new Account(randInt.nextInt(100)+10,3429.23);
             Account userAcc3 = new Account(randInt.nextInt(100)+10,242934.2145);
+
             Transaction transaction = null;
             try (Session session = HibernateUtils.getSessionFactory().openSession()) {
                 // start a transaction
