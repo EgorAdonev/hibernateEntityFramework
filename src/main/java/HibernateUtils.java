@@ -10,10 +10,16 @@ import org.hibernate.mapping.MetadataSource;
 
 public class HibernateUtils {
         private static StandardServiceRegistry registry;
-        private static SessionFactory ourSessionFactory;
+//        private static SessionFactory ourSessionFactory = null;
+
+        private static SessionFactory sessionFactory = null;
+
+        static {
+            Configuration cfg = new Configuration().configure();
+        }
 
         public static SessionFactory getSessionFactory() {
-            if(ourSessionFactory == null) {
+            if(sessionFactory == null) {
             try {
                 // создаем регистр
                 registry = new StandardServiceRegistryBuilder().configure().build();
@@ -22,7 +28,7 @@ public class HibernateUtils {
                 // метаданные
                 Metadata metaData = sources.getMetadataBuilder().build();
                 // созданик сессии
-                ourSessionFactory = metaData.getSessionFactoryBuilder().build();
+                sessionFactory = metaData.getSessionFactoryBuilder().build();
 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -30,11 +36,40 @@ public class HibernateUtils {
                 if (registry != null) StandardServiceRegistryBuilder.destroy(registry);
             }
         }
-            return ourSessionFactory;
+            return sessionFactory;
         }
+
         public static void shutdown() {
+        // Close caches and connection pools
             if (registry != null) {
                 StandardServiceRegistryBuilder.destroy(registry);
-             }
+            }
+            getSessionFactory().close();
         }
+
+//        public static SessionFactory getSessionFactory() {
+//            if(ourSessionFactory == null) {
+//            try {
+//                // создаем регистр
+//                registry = new StandardServiceRegistryBuilder().configure().build();
+//                // создаем источники метаданных
+//                MetadataSources sources = new MetadataSources(registry);
+//                // метаданные
+//                Metadata metaData = sources.getMetadataBuilder().build();
+//                // созданик сессии
+//                ourSessionFactory = metaData.getSessionFactoryBuilder().build();
+//
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//                // убиваем регистр при ошибке иннициализации
+//                if (registry != null) StandardServiceRegistryBuilder.destroy(registry);
+//            }
+//        }
+//            return ourSessionFactory;
+//        }
+//        public static void shutdown() {
+//            if (registry != null) {
+//                StandardServiceRegistryBuilder.destroy(registry);
+//             }
+//        }
 }
