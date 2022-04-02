@@ -9,27 +9,27 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.mapping.MetadataSource;
 
 public class HibernateUtils {
-        private static StandardServiceRegistry registry;
-//        private static SessionFactory ourSessionFactory = null;
-
+        private static StandardServiceRegistry registry = null;
         private static SessionFactory sessionFactory = null;
 
         static {
-            Configuration cfg = new Configuration().configure();
+            Configuration cfg = new Configuration();
             cfg.addAnnotatedClass(User.class);
+            cfg.addAnnotatedClass(Account.class);
+            cfg.addAnnotatedClass(Transfer.class);
+            cfg.configure();
         }
 
-        public static SessionFactory getSessionFactory() {
+        public static synchronized SessionFactory getSessionFactory() {
             if(sessionFactory == null) {
             try {
                 // создаем регистр
-                registry = new StandardServiceRegistryBuilder().configure().build();
-                // создаем источники метаданных
-                MetadataSources sources = new MetadataSources(registry);
-                // метаданные
-                Metadata metaData = sources.getMetadataBuilder().build();
-                // созданик сессии
-                sessionFactory = metaData.getSessionFactoryBuilder().build();
+                registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+                // создание сессии
+                sessionFactory = new MetadataSources( registry )
+                        .buildMetadata()
+                        .buildSessionFactory();
+                //or metaData.getSessionFactoryBuilder().build();
 
             } catch (Exception ex) {
                 ex.printStackTrace();
