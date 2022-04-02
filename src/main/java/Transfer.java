@@ -77,6 +77,9 @@ public class Transfer implements Serializable {
         this.transferAmount = transferAmount;
     }
 
+    public Transfer(){
+    }
+
     public Transfer(int transferId) {
         this.transferId = transferId;
     }
