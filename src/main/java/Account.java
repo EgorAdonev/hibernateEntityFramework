@@ -1,9 +1,11 @@
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Entity
 @Table(name = "account",schema = "bank")
-public class Account {
+public class Account implements Serializable {
+    private static final long serialVersionUID = 2L;
     @Id
     @GeneratedValue
     @Column(name = "accountId", nullable = false)

@@ -1,9 +1,11 @@
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name="Transfer",schema = "bank")
-public class Transfer {
+public class Transfer implements Serializable {
+    private static final long serialVersionUID = 3965716188361032301L;
     @Id
     @Column(name = "id")
     private int transferId;
