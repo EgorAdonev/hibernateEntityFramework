@@ -1,8 +1,9 @@
 import javax.persistence.*;
+import java.io.Serializable;
 
-@Entity
+@Entity(name = "user")
 @Table(name = "user",schema = "bank")
-public class User {
+public class User implements Serializable {
     @Id
     @Column(name = "id", nullable = false)
     @OneToMany(mappedBy = "userByUserId")

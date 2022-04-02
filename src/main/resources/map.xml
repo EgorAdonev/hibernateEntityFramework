@@ -6,19 +6,19 @@
 <hibernate-mapping package="org.adonev.jdbcEntityFramework">
     <class name="User" table="user" schema="bank">
         <id name="id">
-            <column name="id" sql-type="int(10) unsigned AUTO_INCREMENT"/>
+            <column name="id" />
         </id>
     </class>
 
     <class name="Account" table="account" schema="bank">
         <id name="id">
-            <column name="accountId" sql-type="int(11) AUTO_INCREMENT"/>
+            <column name="accountId" />
         </id>
     </class>
 
     <class name="Transfer" table="transfer" schema="bank">
         <id name="id">
-            <column name="transferId" sql-type="int(22) AUTO_INCREMENT"/>
+            <column name="transferId" />
         </id>
     </class>
 

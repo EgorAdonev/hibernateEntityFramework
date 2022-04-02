@@ -33,36 +33,40 @@ public class StartHibernateSession {
             Transfer acc1ToAcc2 = Transfer.income(700, userAcc1, userAcc2, randInt.nextInt(100)+100, true);
             Transfer acc2toAcc1 = Transfer.outcome(-700, userAcc2, userAcc1, randInt.nextInt(100)+100, false);
             Transaction transaction = null;
-            try (Session session = HibernateUtils.getSessionFactory().openSession()) {
-                // start a transaction
-                transaction = session.beginTransaction();
-                // save the student objects
-                session.save(user1);
-                session.save(user2);
-                session.save(user3);
-                session.save(userAcc1);
-                session.save(userAcc2);
-                session.save(userAcc3);
-                session.save(acc1ToYourSelf);
-                session.save(acc1ToAcc2);
-                session.save(acc2toAcc1);
-                // commit transaction
-                transaction.commit();
-            } catch (Exception e) {
-                if (transaction != null) {
-                    transaction.rollback();
+            Session session = HibernateUtils.getSessionFactory().openSession();
+            try {
+                try  {
+                    // start a transaction
+                    transaction = session.beginTransaction();
+                    // save the student objects
+                    session.save(user1);
+                    session.save(user2);
+                    session.save(user3);
+                    session.save(userAcc1);
+                    session.save(userAcc2);
+                    session.save(userAcc3);
+                    session.save(acc1ToYourSelf);
+                    session.save(acc1ToAcc2);
+                    session.save(acc2toAcc1);
+                    // commit transaction
+                    transaction.commit();
+                } catch (Exception e) {
+                    if (transaction != null) {
+                        transaction.rollback();
+                    }
+                    e.printStackTrace();
                 }
-                e.printStackTrace();
-            }
-
-            try (Session session = HibernateUtils.getSessionFactory().openSession()) {
-                List< User > users = session.createQuery("from User", User.class).list();
-                users.forEach(s -> System.out.println(s.getName()));
-            } catch (Exception e) {
-                if (transaction != null) {
-                    transaction.rollback();
+                try  {
+                    List<User> users = session.createQuery("from User", User.class).list();
+                    users.forEach(s -> System.out.println(s.getName()));
+                } catch (Exception e) {
+                    if (transaction != null) {
+                        transaction.rollback();
+                    }
+                    e.printStackTrace();
                 }
-                e.printStackTrace();
+            } finally {
+                session.close();
             }
         }
     }

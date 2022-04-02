@@ -16,6 +16,7 @@ public class HibernateUtils {
 
         static {
             Configuration cfg = new Configuration().configure();
+            cfg.addAnnotatedClass(User.class);
         }
 
         public static SessionFactory getSessionFactory() {
