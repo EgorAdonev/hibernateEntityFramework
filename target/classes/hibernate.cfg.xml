@@ -9,7 +9,7 @@
         <property name="connection.url">jdbc:postgresql://localhost:5435/bank</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="connection.username">banker</property>
-        <property name="connection.password"></property>
+        <property name="connection.password">ban23k</property>
 
         <!--Just displays. Optional parameter.-->
         <!--Просто отображает. Не обязательный параметр.-->

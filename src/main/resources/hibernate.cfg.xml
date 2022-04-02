@@ -33,7 +33,7 @@
 
         <!--The parameter is optional. Dialect Database.-->
         <!--Параметр не обязательный. Диалект базы данных.-->
-        <!--<property name="dialect">org.hibernate.dialect.H2Dialect</property>-->
+        <property name="dialect">org.hibernate.dialect.PostgreSQL94Dialect</property>
 
         <!--The parameter is optional.-->
         <!--Параметр не обязательный.-->
