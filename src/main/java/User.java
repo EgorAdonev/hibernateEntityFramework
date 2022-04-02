@@ -1,11 +1,12 @@
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity(name = "user")
+@Entity
 @Table(name = "user",schema = "bank")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     @OneToMany(mappedBy = "userByUserId")
     private int userId;
@@ -27,8 +28,7 @@ public class User implements Serializable {
 
     public void setName(String name) { userName = name; }
 
-    public User(int userId,String userName) {
-        this.userId = userId;
+    public User(String userName) {
         this.userName = userName;
     }
 

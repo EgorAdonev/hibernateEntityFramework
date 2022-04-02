@@ -5,20 +5,20 @@
 
 <hibernate-mapping package="org.adonev.jdbcEntityFramework">
     <class name="User" table="user" schema="bank">
-        <id name="id">
+        <id name="userId">
             <column name="id" />
         </id>
     </class>
 
     <class name="Account" table="account" schema="bank">
-        <id name="id">
-            <column name="accountId" />
+        <id name="accountId">
+            <column name="account_Id" />
         </id>
     </class>
 
     <class name="Transfer" table="transfer" schema="bank">
-        <id name="id">
-            <column name="transferId" />
+        <id name="transferId">
+            <column name="transfer_Id" />
         </id>
     </class>
 

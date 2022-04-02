@@ -8,14 +8,14 @@ public class Account implements Serializable {
     private static final long serialVersionUID = 2L;
     @Id
     @GeneratedValue
-    @Column(name = "accountId", nullable = false)
+    @Column(name = "account_Id", nullable = false)
     @OneToMany(mappedBy = "transferId")
     private int accountId;
     @Basic
     @Column(name = "balance", nullable=false)
     private double balance;
     @ManyToOne
-    @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "user_Id", referencedColumnName = "id", nullable = false)
     private User userByUserId;
 
     public int getId() {
@@ -39,9 +39,8 @@ public class Account implements Serializable {
         this.userByUserId = userByUserId;
     }
 
-    public Account(int accountId, double balance) {
+    public Account( double balance) {
         this.balance = balance;
-        this.accountId = accountId;
     }
     public Account(){
     }

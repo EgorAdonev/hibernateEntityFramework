@@ -7,19 +7,20 @@ import java.util.Date;
 public class Transfer implements Serializable {
     private static final long serialVersionUID = 3965716188361032301L;
     @Id
-    @Column(name = "id")
+    @GeneratedValue
+    @Column(name = "transfer_Id")
     private int transferId;
 
     @Column(name = "transferTimestamp",nullable = false)
-    private Date transferTimestamp;
+    private java.sql.Timestamp transferTimestamp;
 
     //join by referencedcolname - many(several tranfers could be from one Account(schet)
     @ManyToOne
-    @JoinColumn(name = "accountId", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "accountId", referencedColumnName = "account_Id", nullable = false)
     private Account accountFrom;
 
     @ManyToOne
-    @JoinColumn(name = "accountId", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "accountId", referencedColumnName = "account_Id", nullable = false)
     private Account accountTo;
 
     //true - income(dohod), false - expense(trata)
@@ -37,11 +38,11 @@ public class Transfer implements Serializable {
         this.transferId = transferId;
     }
 
-    public Date getTransferTimestamp() {
+    public java.sql.Timestamp getTransferTimestamp() {
         return transferTimestamp;
     }
 
-    public void setTransferTimestamp(Date transferTimestamp) {
+    public void setTransferTimestamp(java.sql.Timestamp transferTimestamp) {
         this.transferTimestamp = transferTimestamp;
     }
 
@@ -80,29 +81,26 @@ public class Transfer implements Serializable {
     public Transfer(){
     }
 
-    public Transfer(int transferId) {
-        this.transferId = transferId;
-    }
-
-    public Transfer(int transferId,Date transferTimestamp,boolean type,Account accountSender,Account accountRecipient,double transferAmount){
-        this.transferId = transferId;
-        this.transferTimestamp = new Date(); this.isIncome = type ; accountFrom = accountSender; accountTo = accountRecipient;
+    public Transfer(boolean type,Account accountSender,Account accountRecipient,double transferAmount){
+        Date date = new Date();
+        this.transferTimestamp = new java.sql.Timestamp(date.getTime());
+        this.isIncome = type ; accountFrom = accountSender; accountTo = accountRecipient;
         this.transferAmount = transferAmount;
     }
 
-    public Transfer(int transferId,boolean type,Account accountSender,Account accountRecipient,double transferAmount) {
-         this.transferId = transferId; this.isIncome = type; accountFrom = accountSender; accountTo = accountRecipient;
-         this.transferAmount=transferAmount;
-    }
+//    public Transfer(int transferId,boolean type,Account accountSender,Account accountRecipient,double transferAmount) {
+//         this.transferId = transferId; this.isIncome = type; accountFrom = accountSender; accountTo = accountRecipient;
+//         this.transferAmount=transferAmount;
+//    }
 
         double currentBalance;
-        public static Transfer income(double amount, Account senderAccount, Account recipientAccount, int transferId, boolean isIncome){
+        public static Transfer income(double amount, Account senderAccount, Account recipientAccount, boolean isIncome){
            Transfer incomeTransfer = null;
             // create record
            //Transfer withdrawTransfer = new Transfer( transferId,new Date(),isIncome,senderAccount,recipientAccount);
            if (amount > 0){
                // create record
-               incomeTransfer = new Transfer( transferId,new Date(), true,senderAccount,recipientAccount,amount);
+               incomeTransfer = new Transfer(true,senderAccount,recipientAccount,amount);
                senderAccount.setBalance(senderAccount.getBalance()+amount);
                recipientAccount.setBalance(recipientAccount.getBalance()-amount);
            }
@@ -116,13 +114,13 @@ public class Transfer implements Serializable {
         }
            return incomeTransfer;
     }
-        public static Transfer outcome(double amount, Account senderAccount, Account recipientAccount, int transferId, boolean isIncome) {
+        public static Transfer outcome(double amount, Account senderAccount, Account recipientAccount, boolean isIncome) {
             Transfer outcomeTransfer = null;
             if (amount < 0) {
                 if (senderAccount.getBalance() < amount) {
                     System.out.println("Not enough money");
                 }
-                outcomeTransfer = new Transfer(transferId, new Date(), false, senderAccount, recipientAccount, amount);
+                outcomeTransfer = new Transfer(false, senderAccount, recipientAccount, amount);
                 senderAccount.setBalance(senderAccount.getBalance() - amount);
                 recipientAccount.setBalance(recipientAccount.getBalance() + amount);
             } else {
