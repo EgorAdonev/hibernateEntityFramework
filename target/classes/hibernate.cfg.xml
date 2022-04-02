@@ -6,10 +6,10 @@
     <session-factory>
         <!--Basic database connection-->
         <!--Основное подключение к базе данных-->
-        <property name="connection.url">jdbc:postgresql://localhost:5435/bank</property>
-        <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.username">banker</property>
-        <property name="connection.password">ban23k</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://127.0.0.1:5435/bank</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.username">banker</property>
+        <property name="hibernate.connection.password">ban23k</property>
 
         <!--Just displays. Optional parameter.-->
         <!--Просто отображает. Не обязательный параметр.-->
@@ -29,11 +29,11 @@
 
         <!--The parameter is optional. If there are no tables in the database, Hibernate will create it.-->
         <!--Параметр не обязательный. Если в базе данных нет таблиц, то Hibernate создаст ее.-->
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
 
         <!--The parameter is optional. Dialect Database.-->
         <!--Параметр не обязательный. Диалект базы данных.-->
-        <!--<property name="dialect">org.hibernate.dialect.H2Dialect</property>-->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL94Dialect</property>
 
         <!--The parameter is optional.-->
         <!--Параметр не обязательный.-->
