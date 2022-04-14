@@ -1,3 +1,5 @@
+package org.adonev.jdbcEntityFramework;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -13,9 +15,9 @@ public class StartHibernateSession {
         Transaction transactionTransferCreation = null;
         Session session = HibernateUtils.getSessionFactory().openSession();
         try {
-            User user1 = new User("Mikhail Petrov");
-            User user2 = new User("Anna Ivanova");
-            User user3 = new User("Egor Petrov");
+            User user1 = new User("Lil Wayne");
+            User user2 = new User("Monica Belucci");
+            User user3 = new User("Tony Stark");
             Account userAcc1 = new Account(29.13);
             Account userAcc2 = new Account(3429.23);
             Account userAcc3 = new Account(242934.2145);

@@ -5,7 +5,6 @@
 <hibernate-configuration>
     <session-factory>
         <!--Basic database connection-->
-        <!--Основное подключение к базе данных-->
         <property name="hibernate.connection.url">jdbc:postgresql://127.0.0.1:5432/bank</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.username">banker</property>

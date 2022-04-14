@@ -1,3 +1,5 @@
+package org.adonev.jdbcEntityFramework;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
