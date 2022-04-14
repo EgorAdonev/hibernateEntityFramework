@@ -9,7 +9,7 @@ import java.util.Date;
 public class Transfer implements Serializable {
     private static final long serialVersionUID = 3965716188361032301L;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transfer_Id")
     private int transferId;
 

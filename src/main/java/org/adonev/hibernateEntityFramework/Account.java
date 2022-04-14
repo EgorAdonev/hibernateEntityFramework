@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class Account implements Serializable {
     private static final long serialVersionUID = 2L;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_Id", nullable = false)
     @OneToMany(mappedBy = "transferId")
     private int accountId;
