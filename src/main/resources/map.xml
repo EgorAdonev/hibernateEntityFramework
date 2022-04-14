@@ -4,19 +4,19 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="org.adonev.hibernateEntityFramework">
-    <class name="User" table="user" schema="bank">
+    <class name="User" table="user" schema="public">
         <id name="userId">
             <column name="id" />
         </id>
     </class>
 
-    <class name="Account" table="account" schema="bank">
+    <class name="Account" table="account" schema="public">
         <id name="accountId">
             <column name="account_Id" />
         </id>
     </class>
 
-    <class name="Transfer" table="transfer" schema="bank">
+    <class name="Transfer" table="transfer" schema="public">
         <id name="transferId">
             <column name="transfer_Id" />
         </id>
