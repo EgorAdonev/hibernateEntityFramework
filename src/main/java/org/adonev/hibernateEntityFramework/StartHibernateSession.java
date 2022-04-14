@@ -29,12 +29,15 @@ public class StartHibernateSession {
             transactionUserCreation = session.beginTransaction();
             // save the student objects
             session.save(user1);
+            session.persist(user1);
             session.flush();
             session.clear();
             session.save(user2);
+            session.persist(user2);
             session.flush();
             session.clear();
             session.save(user3);
+            session.persist(user3);
             session.flush();
             session.clear();
             // commit transaction
@@ -42,22 +45,31 @@ public class StartHibernateSession {
 
             transactionAccountCreation = session.beginTransaction();
             session.save(userAcc1);
+            session.persist(userAcc1);
             session.flush();
             session.clear();
             session.save(userAcc2);
+            session.persist(userAcc2);
             session.flush();
             session.clear();
             session.save(userAcc3);
+            session.persist(userAcc3);
+            session.flush();
+            session.clear();
+
             transactionAccountCreation.commit();
 
             transactionTransferCreation = session.beginTransaction();
             session.save(acc1ToYourSelf);
+            session.persist(acc1ToYourSelf);
             session.flush();
             session.clear();
             session.save(acc1ToAcc2);
+            session.persist(acc1ToAcc2);
             session.flush();
             session.clear();
             session.save(acc2toAcc1);
+            session.persist(acc2toAcc1);
             session.flush();
             session.clear();
             transactionTransferCreation.commit();
@@ -66,6 +78,7 @@ public class StartHibernateSession {
             session.flush();
             session.clear();
             List<User> users = session.createQuery("from User", User.class).list();
+            session.persist(users);
             users.forEach(s -> System.out.println(s.getuserName()));
             session.getTransaction().commit();
 //            session.close();
