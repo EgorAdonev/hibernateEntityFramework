@@ -17,7 +17,7 @@
         <!--The parameter is optional. Enables or disables the SQL format.-->
         <property name="format_sql">true</property>
         <!--The parameter is optional. Indicates default database.-->
-        <property name="hibernate.default_schema">bank</property>
+        <property name="hibernate.default_schema">public</property>
         <!--The parameter is optional. If there are no tables in the database, Hibernate will create it.-->
         <property name="hibernate.hbm2ddl.auto">create</property>
         <!--The parameter is optional. Dialect Database.-->

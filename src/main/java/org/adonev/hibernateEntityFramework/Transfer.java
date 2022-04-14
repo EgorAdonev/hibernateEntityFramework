@@ -32,35 +32,35 @@ public class Transfer implements Serializable {
     @Column(name = "transferAmount",nullable = false)
     private double transferAmount;
 
-    public int getTransferId() {
+    public int gettransferId() {
         return transferId;
     }
 
-    public void setTransferId(int transferId) {
+    public void settransferId(int transferId) {
         this.transferId = transferId;
     }
 
-    public java.sql.Timestamp getTransferTimestamp() {
+    public java.sql.Timestamp gettransferTimestamp() {
         return transferTimestamp;
     }
 
-    public void setTransferTimestamp(java.sql.Timestamp transferTimestamp) {
+    public void settransferTimestamp(java.sql.Timestamp transferTimestamp) {
         this.transferTimestamp = transferTimestamp;
     }
 
-    public Account getAccountFrom() {
+    public Account getaccountFrom() {
         return accountFrom;
     }
 
-    public void setAccountFrom(Account accountFrom) {
+    public void setaccountFrom(Account accountFrom) {
         this.accountFrom = accountFrom;
     }
 
-    public Account getAccountTo() {
+    public Account getaccountTo() {
         return accountFrom;
     }
 
-    public void setAccountTo(Account accountTo) {
+    public void setaccountTo(Account accountTo) {
         this.accountTo = accountTo;
     }
 
@@ -68,15 +68,15 @@ public class Transfer implements Serializable {
         return isIncome;
     }
 
-    public void setIsIncome(boolean isIncome) {
+    public void setisIncome(boolean isIncome) {
         this.isIncome = isIncome;
     }
 
-    public double getTransferAmount() {
+    public double gettransferAmount() {
         return transferAmount;
     }
 
-    public void setTransferAmount(double transferAmount) {
+    public void settransferAmount(double transferAmount) {
         this.transferAmount = transferAmount;
     }
 
@@ -89,11 +89,6 @@ public class Transfer implements Serializable {
         this.isIncome = type ; accountFrom = accountSender; accountTo = accountRecipient;
         this.transferAmount = transferAmount;
     }
-
-//    public Transfer(int transferId,boolean type,Account accountSender,Account accountRecipient,double transferAmount) {
-//         this.transferId = transferId; this.isIncome = type; accountFrom = accountSender; accountTo = accountRecipient;
-//         this.transferAmount=transferAmount;
-//    }
 
         double currentBalance;
         public static Transfer income(double amount, Account senderAccount, Account recipientAccount, boolean isIncome){

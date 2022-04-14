@@ -34,10 +34,10 @@ public class Account implements Serializable {
         balance = currentBalance;
     }
 
-    public User getUserByUserId() {
+    public User getuserByUserId() {
         return userByUserId;
     }
-    public void setUserByUserId(User userByUserId) {
+    public void setuserByUserId(User userByUserId) {
         this.userByUserId = userByUserId;
     }
 
