@@ -1,4 +1,4 @@
-package org.adonev.jdbcEntityFramework;
+package org.adonev.hibernateEntityFramework;
 
 import javax.persistence.*;
 import java.io.Serializable;

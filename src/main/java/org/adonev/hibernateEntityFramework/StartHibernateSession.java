@@ -1,9 +1,8 @@
-package org.adonev.jdbcEntityFramework;
+package org.adonev.hibernateEntityFramework;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class StartHibernateSession {
