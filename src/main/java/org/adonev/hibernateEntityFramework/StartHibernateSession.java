@@ -47,7 +47,7 @@ public class StartHibernateSession {
 
             session.beginTransaction();
             List<User> users = session.createQuery("from User", User.class).list();
-            users.forEach(s -> System.out.println(s.getName()));
+            users.forEach(s -> System.out.println(s.getuserName()));
             session.getTransaction().commit();
 //            session.close();
         }

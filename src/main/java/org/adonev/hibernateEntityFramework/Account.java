@@ -20,17 +20,17 @@ public class Account implements Serializable {
     @JoinColumn(name = "user_Id", referencedColumnName = "id", nullable = false)
     private User userByUserId;
 
-    public int getId() {
+    public int getaccountId() {
         return accountId;
     }
-    public void setId(int id) {
+    public void setaccountId(int id) {
         accountId = id;
     }
 
-    public double getBalance(){
+    public double getbalance(){
         return balance;
     }
-    public void setBalance(double currentBalance){
+    public void setbalance(double currentBalance){
         balance = currentBalance;
     }
 

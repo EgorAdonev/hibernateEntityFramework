@@ -16,19 +16,19 @@ public class User implements Serializable {
     @Column(name = "name", nullable = false, length = 30)
     private String userName;
 
-    public int getId() {
+    public int getuserId() {
         return userId;
     }
 
-    public void setId(int id) {
+    public void setuserId(int id) {
         userId = id;
     }
 
-    public String getName() {
+    public String getuserName() {
         return userName;
     }
 
-    public void setName(String name) { userName = name; }
+    public void setuserName(String name) { userName = name; }
 
     public User(String userName) {
         this.userName = userName;

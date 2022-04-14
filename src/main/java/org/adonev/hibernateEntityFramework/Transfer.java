@@ -103,8 +103,8 @@ public class Transfer implements Serializable {
            if (amount > 0){
                // create record
                incomeTransfer = new Transfer(true,senderAccount,recipientAccount,amount);
-               senderAccount.setBalance(senderAccount.getBalance()+amount);
-               recipientAccount.setBalance(recipientAccount.getBalance()-amount);
+               senderAccount.setbalance(senderAccount.getbalance()+amount);
+               recipientAccount.setbalance(recipientAccount.getbalance()-amount);
            }
            else {
                System.out.println("Trying to record income with negative value!");
@@ -119,12 +119,12 @@ public class Transfer implements Serializable {
         public static Transfer outcome(double amount, Account senderAccount, Account recipientAccount, boolean isIncome) {
             Transfer outcomeTransfer = null;
             if (amount < 0) {
-                if (senderAccount.getBalance() < amount) {
+                if (senderAccount.getbalance() < amount) {
                     System.out.println("Not enough money");
                 }
                 outcomeTransfer = new Transfer(false, senderAccount, recipientAccount, amount);
-                senderAccount.setBalance(senderAccount.getBalance() - amount);
-                recipientAccount.setBalance(recipientAccount.getBalance() + amount);
+                senderAccount.setbalance(senderAccount.getbalance() - amount);
+                recipientAccount.setbalance(recipientAccount.getbalance() + amount);
             } else {
                 System.out.println("Trying to record outcome with positive value!");
                 try {
