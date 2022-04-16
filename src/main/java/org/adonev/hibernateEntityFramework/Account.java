@@ -11,7 +11,6 @@ public class Account implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_Id", nullable = false)
-    @OneToMany(mappedBy = "transferId")
     private int accountId;
     @Basic
     @Column(name = "balance", nullable=false)
