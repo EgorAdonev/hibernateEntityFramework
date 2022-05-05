@@ -9,14 +9,13 @@ import java.io.Serializable;
 public class Account implements Serializable {
     private static final long serialVersionUID = 2L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_Id", nullable = false)
     private int accountId;
     @Basic
     @Column(name = "balance", nullable=false)
     private double balance;
     @ManyToOne
-    @JoinColumn(name = "user_Id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "user_Id", referencedColumnName = "userBy", nullable = false)
     private User userByUserId;
 
     public int getaccountId() {
