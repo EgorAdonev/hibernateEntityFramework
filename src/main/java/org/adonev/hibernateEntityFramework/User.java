@@ -8,10 +8,12 @@ import java.io.Serializable;
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    @OneToMany(mappedBy = "userByUserId")
     private int userId;
+    @Column(name = "userBy",nullable = false)
+    @OneToMany
+    @JoinColumn(mappedBy = "userByUserId")
+    private User userBy;
     @Basic
     @Column(name = "name", nullable = false, length = 30)
     private String userName;
